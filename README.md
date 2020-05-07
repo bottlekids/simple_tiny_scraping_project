@@ -2,6 +2,7 @@
 
 Libraries used:
 * beautiful soup
+* for parsing html5lib
 * requests
 * regular expressions
 * datetime 
