@@ -1,8 +1,8 @@
 # simple_tiny_scraping_project
 
-Libraries used:
+Libraries and modules used:
 * beautiful soup
-* for parsing html5lib
+* for parsing: html5lib
 * requests
 * regular expressions
 * datetime 
