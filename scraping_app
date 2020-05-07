@@ -3,18 +3,18 @@ from bs4 import BeautifulSoup
 import requests
 import datetime
 
-# datetime
+# datetime - get today´s date and make it the same format as the one on the website we are scraping.
 get_date = str(datetime.date.today())
 today = datetime.datetime.strptime(get_date, '%Y-%m-%d').strftime('%d.%m.%Y')
 
-# beautiful soup
+# beautiful soup - the site has 2 tables. The one we need is the first.
 source = requests.get("https://www.berlin.de/sen/arbeit/beschaeftigung/arbeitsschutz/artikel.761558.php").text
 soup = BeautifulSoup(source, "html5lib")
 get_top_table = str(soup.find("ul", class_="list-tablelist border oddeven"))
 
-# regular expressions
+# regular expressions - we don't need everything in the table, just the dates
 pattern = re.compile(r'\d\d\.\d\d\.\d\d\d\d')
-# after all the dates in the table are found, they are converted to strings and now we can compare them to today's date
 dates_in_the_table = [str(match.group(0)) for match in pattern.finditer(get_top_table)]
+# after all the dates in the table are found, they are converted to strings and now we can compare them to today's date
 
 print(today in dates_in_the_table)
