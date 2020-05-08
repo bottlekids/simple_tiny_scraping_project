@@ -8,7 +8,8 @@ get_date = str(datetime.date.today())
 today = datetime.datetime.strptime(get_date, '%Y-%m-%d').strftime('%d.%m.%Y')
 
 # beautiful soup - the site has 2 tables. The one we need is the first.
-source = requests.get("https://www.berlin.de/sen/arbeit/beschaeftigung/arbeitsschutz/artikel.761558.php").text
+link_to_site = "https://www.berlin.de/sen/arbeit/beschaeftigung/arbeitsschutz/artikel.761558.php"
+source = requests.get(link_to_site).text
 soup = BeautifulSoup(source, "html5lib")
 get_top_table = str(soup.find("ul", class_="list-tablelist border oddeven"))
 
